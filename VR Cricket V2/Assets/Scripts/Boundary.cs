@@ -3,17 +3,9 @@ using UnityEngine;
 public class Boundary : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    ScoreManager scoreManager;
-    void Start()
-    {
-        scoreManager = GameObject.FindWithTag("logics").GetComponent<ScoreManager>();
-    }
+    public ScoreManager scoreManager;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("ball"))

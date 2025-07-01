@@ -9,12 +9,6 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text scoreBoardText;
     public TMP_Text notiText;
     public AudioSource crowdAudio;
-
-    private void Start()
-    {
-        UpdateScore(0, 0);
-    }
-
     public void UpdateScore(int run, int wick)
     {
         totalRun += run;

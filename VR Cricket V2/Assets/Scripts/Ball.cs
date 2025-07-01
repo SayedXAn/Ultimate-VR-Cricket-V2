@@ -50,7 +50,7 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (hitByBat && rb.linearVelocity.magnitude <= 0.0008f)
+        if (hitByBat && rb.linearVelocity.magnitude <= 0.0008f && !rb.isKinematic)
         {
             rb.isKinematic = true;
         }
@@ -92,12 +92,6 @@ public class Ball : MonoBehaviour
                 velocity += transform.forward * deviation;
                 rb.linearVelocity = velocity;
             }
-
-            //// Now apply spin torque after bounce
-            //if (spinAxis != Vector3.zero && spinTorque > 0f)
-            //{
-            //    rb.AddTorque(spinAxis.normalized * spinTorque, ForceMode.Impulse);
-            //}
         }
     }
 

@@ -3,16 +3,6 @@ using UnityEngine;
 public class Pitch : MonoBehaviour
 {
     [SerializeField] PhysicsMaterial pitchMat;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
