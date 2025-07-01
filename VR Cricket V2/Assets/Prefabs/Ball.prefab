@@ -142,9 +142,7 @@ MonoBehaviour:
   bounceMultiplier: 1
   trail: {fileID: 3326262179861382391}
   speed: 0
-  spinTorque: 1.2
-  spinAxis: {x: 0, y: 0, z: 0}
-  deviationValue: 1.2
+  deviationValue: 1.5
   SFX:
   - {fileID: 8300000, guid: 9ead586a82e015a43b0ad4400315ade6, type: 3}
   - {fileID: 8300000, guid: 4e6a3d311efcee448b57b5344ad31c9d, type: 3}
@@ -153,8 +151,9 @@ MonoBehaviour:
   groundCheckDistance: 0.1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 0
   debugText: {fileID: 0}
+  ballType: 2
 --- !u!135 &4959679349696131927
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -430,7 +429,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_MaskInteraction: 0
   m_Autodestruct: 1
-  m_Emitting: 0
+  m_Emitting: 1
   m_ApplyActiveColorSpace: 1
 --- !u!1 &6207652713026805141
 GameObject:

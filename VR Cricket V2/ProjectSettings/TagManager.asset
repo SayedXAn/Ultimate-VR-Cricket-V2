@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - boundary
+  - audiosource
+  - logics
+  - debugtext
+  - bat
+  - ball
+  - stump
+  - pitch
   layers:
   - Default
   - TransparentFX
