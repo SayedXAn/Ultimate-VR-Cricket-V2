@@ -34,6 +34,8 @@ public class Ball : MonoBehaviour
 
     public int ballType = 0; //0=pace ball 1=leg spin 2=offspin
 
+    public GameObject hitMarkerPrefab;
+
 
     private void Start()
     {
@@ -75,15 +77,25 @@ public class Ball : MonoBehaviour
             PlaySFX(2);
             trail.emitting = true;
             debugText.text = "Bat hit";
+
+            if (hitMarkerPrefab != null && collision.contactCount > 0)
+            {
+                ContactPoint contact = collision.contacts[0];
+                Vector3 hitPosition = contact.point;
+                Vector3 normal = contact.normal;
+                Quaternion rotation = Quaternion.LookRotation(normal, Vector3.up);
+                GameObject marker = Instantiate(hitMarkerPrefab, hitPosition, rotation);
+                marker.transform.localScale = Vector3.one * 0.01f;
+                marker.transform.SetParent(collision.transform);
+
+                Destroy(marker, 5f);
+            }
         }
         if(collision.gameObject.CompareTag("stump"))
         {
             //out
             PlaySFX(1);
             scoreManager.UpdateScore(0, 1);
-            //gameObject.GetComponent<MeshRenderer>().enabled = false;
-            //gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            //gameObject.GetComponent<SphereCollider>().enabled = false;
             bowler.ReadyToBall();
             Destroy(gameObject);
         }

@@ -16,6 +16,7 @@ TagManager:
   - stamp
   - bowler
   - keeper
+  - marker
   layers:
   - Default
   - TransparentFX

@@ -140,7 +140,6 @@ MonoBehaviour:
   hitBoundary: 0
   bounceMultiplier: 1
   trail: {fileID: 3326262179861382391}
-  speed: 0
   deviationValue: 1.5
   SFX:
   - {fileID: 8300000, guid: 9ead586a82e015a43b0ad4400315ade6, type: 3}
@@ -153,6 +152,7 @@ MonoBehaviour:
     m_Bits: 192
   debugText: {fileID: 0}
   ballType: 1
+  hitMarkerPrefab: {fileID: 863406349742493947, guid: a6d51c17d87e36540bb3b5e574b6eee7, type: 3}
 --- !u!135 &4959679349696131927
 SphereCollider:
   m_ObjectHideFlags: 0
