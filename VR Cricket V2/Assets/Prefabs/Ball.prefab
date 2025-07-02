@@ -172,8 +172,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.010003421
-  m_Center: {x: 0.000000014901161, y: 1.3877788e-17, z: 4.656615e-10}
+  m_Radius: 0.02
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8741422361334473923
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2
+  m_Time: 3
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3

@@ -1,6 +1,7 @@
 using UnityEngine;
 public class BatCollision : MonoBehaviour
 {
+    public GameObject LCon;
     public float powerMultiplier = 1.5f;
     private Vector3 lastPosition;
     private Vector3 batVelocity;
@@ -8,6 +9,8 @@ public class BatCollision : MonoBehaviour
     void Update()
     {
         // Track bat velocity manually
+        transform.position = LCon.transform.position;
+        transform.rotation = LCon.transform.rotation;
         batVelocity = (transform.position - lastPosition) / Time.deltaTime;
         lastPosition = transform.position;
     }

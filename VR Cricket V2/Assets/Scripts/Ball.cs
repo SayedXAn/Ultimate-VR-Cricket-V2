@@ -14,11 +14,11 @@ public class Ball : MonoBehaviour
     public TrailRenderer trail;
 
 
-    public float speed = 0;
+    //public float speed = 0;
     //public float spinTorque = 5f;
    // public Vector3 spinAxis = Vector3.zero;
 
-    Vector3 lastPosition = Vector3.zero;
+    //Vector3 lastPosition = Vector3.zero;
     private bool hasBounced = false;
     public float deviationValue = 13f;
     private Rigidbody rb;
@@ -42,26 +42,31 @@ public class Ball : MonoBehaviour
         scoreManager = GameObject.FindWithTag("logics").GetComponent<ScoreManager>();
         bowler = GameObject.FindWithTag("bowler").GetComponent<Bowler>();
         debugText = GameObject.FindWithTag("debugtext").GetComponent<TMP_Text>();
-        StartCoroutine(CountDownTimer());
+        //StartCoroutine(CountDownTimer());
     }
-    void FixedUpdate()
-    {
-        speed = (transform.position - lastPosition).magnitude;
-        lastPosition = transform.position;
-    }    
+    //void FixedUpdate()
+    //{
+    //    //speed = (transform.position - lastPosition).magnitude;
+    //    //lastPosition = transform.position;
+    //}    
 
     void Update()
     {
         Debug.Log(rb.linearVelocity.magnitude);
-        if (rb.linearVelocity.magnitude < 0.37f && !rb.isKinematic)
+        if (rb.linearVelocity.magnitude < 0.75f && !rb.isKinematic)
         {
-            rb.isKinematic = true;
-            bowler.ReadyToBall();
+            StartCoroutine(SmallDelay());
         }
         CheckGroundContactWithRaycast();
 
     }
-
+    IEnumerator SmallDelay()
+    {
+        rb.isKinematic = true;
+        yield return new WaitForSeconds(1);        
+        bowler.ReadyToBall();
+        Destroy(gameObject);
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("bat"))
@@ -76,10 +81,11 @@ public class Ball : MonoBehaviour
             //out
             PlaySFX(1);
             scoreManager.UpdateScore(0, 1);
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            gameObject.GetComponent<SphereCollider>().enabled = false;
+            //gameObject.GetComponent<MeshRenderer>().enabled = false;
+            //gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            //gameObject.GetComponent<SphereCollider>().enabled = false;
             bowler.ReadyToBall();
+            Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("pitch") && !hitByBat && !hasBounced)
         {
@@ -111,11 +117,11 @@ public class Ball : MonoBehaviour
     }
 
 
-    IEnumerator CountDownTimer()
-    {
-        yield return new WaitForSeconds(20f);
-        Destroy(gameObject);
-    }
+    //IEnumerator CountDownTimer()
+    //{
+    //    yield return new WaitForSeconds(20f);
+    //    Destroy(gameObject);
+    //}
 
     void CheckGroundContactWithRaycast()
     {
