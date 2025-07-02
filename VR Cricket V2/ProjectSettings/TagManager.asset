@@ -13,10 +13,10 @@ TagManager:
   - ball
   - stump
   - pitch
-  - stamp
   - bowler
   - keeper
   - marker
+  - ground
   layers:
   - Default
   - TransparentFX

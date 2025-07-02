@@ -119,7 +119,20 @@ public class Ball : MonoBehaviour
                 rb.linearVelocity = velocity;
             }
         }
-        
+
+        if (collision.gameObject.CompareTag("pitch") && hitByBat && !hitGround)
+        {
+            hitGround = true;
+            debugText.text = debugText.text + "\nPitch hit collider";
+        }
+
+        if (collision.gameObject.CompareTag("ground")  && hitByBat && !hitGround)
+        {
+            hitGround = true;
+            debugText.text = debugText.text + "\nGround hit collider";
+        }
+
+
     }
 
     public void PlaySFX(int index)
@@ -145,7 +158,7 @@ public class Ball : MonoBehaviour
                 hitGround = true;
                 Debug.DrawRay(transform.position, GetComponent<Rigidbody>().angularVelocity.normalized * 0.5f, Color.red);
                 Debug.Log("Ball has hit the ground.");
-                debugText.text = debugText.text + "\nGround hit korse";
+                debugText.text = debugText.text + "\nGround hit raycast";
             }
         }
     }
