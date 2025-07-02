@@ -4,6 +4,7 @@ public class Boundary : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public ScoreManager scoreManager;
+    public Bowler bowler;
 
 
     private void OnTriggerEnter(Collider other)
@@ -23,6 +24,7 @@ public class Boundary : MonoBehaviour
                     //6
                     scoreManager.UpdateScore(6, 0);
                 }
+                bowler.ReadyToBall();
             }
 
         }

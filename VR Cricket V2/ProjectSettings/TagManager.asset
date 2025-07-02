@@ -13,6 +13,9 @@ TagManager:
   - ball
   - stump
   - pitch
+  - stamp
+  - bowler
+  - keeper
   layers:
   - Default
   - TransparentFX

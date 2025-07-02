@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     private int totalRun = 0;
     private int wicket = 0;
+    private int totalBall = 0;
     public TMP_Text scoreBoardText;
     public TMP_Text notiText;
     public AudioSource crowdAudio;
@@ -25,7 +26,13 @@ public class ScoreManager : MonoBehaviour
         {
             ShowNotification("Out!");
         }
-        scoreBoardText.text = totalRun.ToString() + "-" + wicket.ToString();
+        scoreBoardText.text = totalRun.ToString() + "-" + wicket.ToString() + "\n" + (totalBall/6) +"."+ (totalBall%6);
+    }
+
+    public void UpdateBall(int ttlBall)
+    {
+        totalBall = ttlBall;
+        scoreBoardText.text = totalRun.ToString() + "-" + wicket.ToString() + "\n" + (totalBall / 6) + "." + (totalBall % 6);
     }
 
     public void ShowNotification(string str)

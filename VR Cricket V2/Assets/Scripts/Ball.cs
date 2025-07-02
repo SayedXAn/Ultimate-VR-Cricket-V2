@@ -23,6 +23,7 @@ public class Ball : MonoBehaviour
     public float deviationValue = 13f;
     private Rigidbody rb;
     ScoreManager scoreManager;
+    Bowler bowler;
 
     public AudioClip[] SFX;
     public AudioSource audioSource;
@@ -39,6 +40,7 @@ public class Ball : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audioSource = GameObject.FindWithTag("audiosource").GetComponent<AudioSource>();
         scoreManager = GameObject.FindWithTag("logics").GetComponent<ScoreManager>();
+        bowler = GameObject.FindWithTag("bowler").GetComponent<Bowler>();
         debugText = GameObject.FindWithTag("debugtext").GetComponent<TMP_Text>();
         StartCoroutine(CountDownTimer());
     }
@@ -50,9 +52,11 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (hitByBat && rb.linearVelocity.magnitude <= 0.0008f && !rb.isKinematic)
+        Debug.Log(rb.linearVelocity.magnitude);
+        if (rb.linearVelocity.magnitude < 0.37f && !rb.isKinematic)
         {
             rb.isKinematic = true;
+            bowler.ReadyToBall();
         }
         CheckGroundContactWithRaycast();
 
@@ -72,6 +76,10 @@ public class Ball : MonoBehaviour
             //out
             PlaySFX(1);
             scoreManager.UpdateScore(0, 1);
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.GetComponent<SphereCollider>().enabled = false;
+            bowler.ReadyToBall();
         }
         if (collision.gameObject.CompareTag("pitch") && !hitByBat && !hasBounced)
         {
@@ -93,6 +101,7 @@ public class Ball : MonoBehaviour
                 rb.linearVelocity = velocity;
             }
         }
+        
     }
 
     public void PlaySFX(int index)

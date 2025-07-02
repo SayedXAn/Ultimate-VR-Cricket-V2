@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bowler : MonoBehaviour
@@ -13,12 +14,23 @@ public class Bowler : MonoBehaviour
     public float minDropTarget;
     public float maxDropTarget;
 
+    private int totalBall = 0;
+    private int overBall = 0;
+    private int currentOverType = 0;
+    private bool readyToBall = true;
+    private int lastOverType = -1;
+
     [Header("Variation")]
     public float angleVariation = 5f;
 
+    public ScoreManager scoreManager;
+
     private void Start()
-    {        
-        InvokeRepeating("StartBowling", 1f, 8f);
+    {
+        //InvokeRepeating("StartBowling", 1f, 8f);
+        StartNewOver();
+        ReadyToBall();
+
     }
 
     public void Bowl()
@@ -26,8 +38,8 @@ public class Bowler : MonoBehaviour
         dropTarget.transform.position = new Vector3(Random.Range(480f, 490f), dropTarget.transform.position.y, dropTarget.transform.position.z);
         GameObject ball = Instantiate(ballPrefab, bowlingPoint.transform.position, Quaternion.identity);
         Rigidbody rb = ball.GetComponent<Rigidbody>();
-        int tempBallType = ball.GetComponent<Ball>().ballType;
-
+        //int tempBallType = ball.GetComponent<Ball>().ballType;
+        ball.GetComponent<Ball>().ballType = currentOverType;
         if (rb == null)
         {
             Debug.LogError("Ball prefab must have a Rigidbody.");
@@ -42,17 +54,22 @@ public class Bowler : MonoBehaviour
 
         // Compute velocity
         
-        if(tempBallType == 0)
+        if(currentOverType == 0)
         {
             timeToDrop = Random.Range(0.75f, 1.0f);
         }
         else
         {
-            timeToDrop = Random.Range(1f, 1.3f);
+            timeToDrop = Random.Range(1.1f, 1.3f);
         }
         
         Vector3 velocity = CalculateLaunchVelocity(transform.position, targetPos, timeToDrop);
         rb.linearVelocity = velocity;
+        readyToBall = false;
+        totalBall++;
+        overBall++;
+        scoreManager.UpdateBall(totalBall);
+        
     }
 
     Vector3 CalculateLaunchVelocity(Vector3 origin, Vector3 target, float time)
@@ -78,9 +95,54 @@ public class Bowler : MonoBehaviour
 
     public void StartBowling()
     {
+        if (overBall == 6)
+        {
+            //OverEnd
+            StartNewOver();
+
+        }
         GetComponent<Animator>().applyRootMotion = true;
         GetComponent<Animator>().Play(animationName, -1, 0f);
+    }
+
+    public void StartNewOver()
+    {
+        overBall = 0;
+        currentOverType = Random.Range(0, 3);
+        while(currentOverType == lastOverType)
+        {
+            currentOverType = Random.Range(0, 3);
+        }
+        lastOverType = currentOverType;
+        string tempText = "---";
+        if(currentOverType == 0)
+        {
+            tempText = "Fast Ball";
+        }
+        else if(currentOverType == 1)
+        {
+            tempText = "Leg Spin";
+        }
+        else if (currentOverType == 2)
+        {
+            tempText = "Off Spin";
+        }
+        scoreManager.ShowNotification(tempText);
+    }
+    public void ReadyToBall()
+    {
+        if(!readyToBall)
+        {
+            readyToBall = true;
+            StartCoroutine(DelayBeforeBowling());
+        }
 
     }
 
+    IEnumerator DelayBeforeBowling()
+    {
+        StopCoroutine(DelayBeforeBowling());
+        yield return new WaitForSeconds(2);
+        StartBowling();
+    }
 }
