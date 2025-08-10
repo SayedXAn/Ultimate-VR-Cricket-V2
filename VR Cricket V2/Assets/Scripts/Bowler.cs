@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class Bowler : MonoBehaviour
 {
@@ -14,23 +16,36 @@ public class Bowler : MonoBehaviour
     public float minDropTarget;
     public float maxDropTarget;
 
-    private int totalBall = 0;
+
+    //private int totalBall = 0; //let's keep the TotalBallCount and TotalRunCount in only the scoreManager script
     private int overBall = 0;
     private int currentOverType = 0;
     private bool readyToBall = true;
+    private bool inningsEnded = true;
     private int lastOverType = -1;
 
     [Header("Variation")]
     public float angleVariation = 5f;
-
+    [SerializeField] Animator bowlerAnimator;
     public ScoreManager scoreManager;
+    public ControllerAnimator conAnim;
 
     private void Start()
     {
         //InvokeRepeating("StartBowling", 1f, 8f);
-        StartNewOver();
-        ReadyToBall();
+        //StartNewOver();
+        //ReadyToBall();
+        InningsEnd();
 
+    }
+
+    private void Update()
+    {
+        if(!readyToBall && inningsEnded && conAnim.pressed)
+        {
+            inningsEnded = false;
+            ReadyToBall();
+        }
     }
 
     public void Bowl()
@@ -66,9 +81,9 @@ public class Bowler : MonoBehaviour
         Vector3 velocity = CalculateLaunchVelocity(transform.position, targetPos, timeToDrop);
         rb.linearVelocity = velocity;
         readyToBall = false;
-        totalBall++;
+        //totalBall++;
         overBall++;
-        scoreManager.UpdateBall(totalBall);
+        scoreManager.UpdateBall(/*totalBall*/);
         
     }
 
@@ -95,14 +110,33 @@ public class Bowler : MonoBehaviour
 
     public void StartBowling()
     {
+        if(scoreManager.CheckIfInningsIsOver())
+        {
+            InningsEnd();
+            return;
+        }
+        bowlerAnimator.enabled = true;
         if (overBall == 6)
         {
             //OverEnd
             StartNewOver();
-
+            //InningsEnd();
         }
-        GetComponent<Animator>().applyRootMotion = true;
-        GetComponent<Animator>().Play(animationName, -1, 0f);
+        else
+        {
+            GetComponent<Animator>().applyRootMotion = true;
+            GetComponent<Animator>().Play(animationName, -1, 0f);
+        }
+    }
+
+    public void InningsEnd()
+    {
+        string tempStr = "You scored: " + scoreManager.GetTotalRun().ToString() + "\nPress the 'Trigger button to play again";
+        //scoreManager.ShowNotification(tempStr);
+        scoreManager.NotificationOnInningsEnd(tempStr);
+        scoreManager.ResetTotalBall();
+        scoreManager.ResetTotalRun();
+
     }
 
     public void StartNewOver()
@@ -129,11 +163,14 @@ public class Bowler : MonoBehaviour
         }
         scoreManager.ShowNotification(tempText);
     }
+
     public void ReadyToBall()
     {
         if(!readyToBall)
         {
             readyToBall = true;
+            overBall = 0;
+            StartNewOver();
             StartCoroutine(DelayBeforeBowling());
         }
 

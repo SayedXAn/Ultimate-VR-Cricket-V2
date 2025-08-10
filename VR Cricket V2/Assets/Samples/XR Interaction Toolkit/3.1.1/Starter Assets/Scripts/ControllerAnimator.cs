@@ -38,6 +38,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         [SerializeField]
         XRInputValueReader<float> m_GripInput = new XRInputValueReader<float>("Grip");
 
+        public bool pressed = false;
+
         void OnEnable()
         {
             if (m_ThumbstickTransform == null || m_GripTransform == null || m_TriggerTransform == null)
@@ -69,8 +71,13 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
             if (m_TriggerInput != null)
             {
+                pressed = true;
                 var triggerVal = m_TriggerInput.ReadValue();
                 m_TriggerTransform.localRotation = Quaternion.Euler(Mathf.Lerp(m_TriggerXAxisRotationRange.x, m_TriggerXAxisRotationRange.y, triggerVal), 0f, 0f);
+            }
+            else
+            {
+                pressed = false;
             }
 
             if (m_GripInput != null)

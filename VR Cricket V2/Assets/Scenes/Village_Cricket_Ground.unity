@@ -18689,7 +18689,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962198369370914868}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: c1b81019a9707d34a9f8875ac0379ebe, type: 3}
   m_Controller: {fileID: 9100000, guid: 59ec7c2bd9ec39047b5dd1ccfa89f153, type: 2}
   m_CullingMode: 1
@@ -22689,7 +22689,9 @@ MonoBehaviour:
   minDropTarget: 480
   maxDropTarget: 490
   angleVariation: 1.2
+  bowlerAnimator: {fileID: 5778293562184501640}
   scoreManager: {fileID: 8621774315979038303}
+  conAnim: {fileID: 8586613861305364397}
 --- !u!1 &8043969220765067559
 GameObject:
   m_ObjectHideFlags: 0
@@ -23350,6 +23352,7 @@ MonoBehaviour:
     m_InputActionReference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualValue: 0
+  pressed: 0
 --- !u!33 &8586613861305364398
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -23433,6 +23436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5b5b50c522a154794bac9239d073cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalBallToPlay: 6
   scoreBoardText: {fileID: 7526332955718054107}
   notiText: {fileID: 7917089672154001653}
   crowdAudio: {fileID: 2579114318098118822}
