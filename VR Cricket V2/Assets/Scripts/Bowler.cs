@@ -40,7 +40,7 @@ public class Bowler : MonoBehaviour
 
     private void Update()
     {        
-        if(!readyToBall && inningsEnded && leftTriggerAction.action != null && leftTriggerAction.action.IsPressed())
+        if(!readyToBall && inningsEnded && ((leftTriggerAction.action != null && leftTriggerAction.action.IsPressed()) || Keyboard.current.spaceKey.wasPressedThisFrame))
         {
             //=Debug.Log("Dhukeseeeeeeeeeee");
             inningsEnded = false;

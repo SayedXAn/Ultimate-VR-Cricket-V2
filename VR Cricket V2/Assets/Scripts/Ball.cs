@@ -30,11 +30,13 @@ public class Ball : MonoBehaviour
 
     public float groundCheckDistance = 0.01f;
     public LayerMask groundLayer;
-    public TMP_Text debugText;
+    //public TMP_Text debugText;
 
     public int ballType = 0; //0=pace ball 1=leg spin 2=offspin
 
     public GameObject hitMarkerPrefab;
+    private GameObject stump;
+    private float distanceFromStump = 0.0f;
 
 
     private void Start()
@@ -43,7 +45,8 @@ public class Ball : MonoBehaviour
         audioSource = GameObject.FindWithTag("audiosource").GetComponent<AudioSource>();
         scoreManager = GameObject.FindWithTag("logics").GetComponent<ScoreManager>();
         bowler = GameObject.FindWithTag("bowler").GetComponent<Bowler>();
-        debugText = GameObject.FindWithTag("debugtext").GetComponent<TMP_Text>();
+        stump = GameObject.FindWithTag("stump");
+        //debugText = GameObject.FindWithTag("debugtext").GetComponent<TMP_Text>();
         //StartCoroutine(CountDownTimer());
     }
     //void FixedUpdate()
@@ -54,13 +57,36 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
+        //distanceFromStump = Vector3.Distance(transform.position, stump.transform.position);
+        //Debug.Log("Distance: " + distanceFromStump);
         //Debug.Log(rb.linearVelocity.magnitude);
         if (rb.linearVelocity.magnitude < 0.75f && !rb.isKinematic)
         {
+            distanceFromStump = Vector3.Distance(transform.position, stump.transform.position);
+            UpdateSingleRuns(distanceFromStump);
+            //Debug.Log("Distance: " + distanceFromStump);
             StartCoroutine(SmallDelay());
         }
         CheckGroundContactWithRaycast();
 
+    }
+
+    private void UpdateSingleRuns(float distance)
+    {
+        int run = 0;
+        if(distance < 80f && distance >= 50f)
+        {
+            run = 1;
+        }
+        else if(distance < 120f && distance >= 80f)
+        {
+            run = 2;
+        }
+        else if (distance >= 120f)
+        {
+            run = 3;
+        }
+        scoreManager.UpdateScore(run, 0);
     }
     IEnumerator SmallDelay()
     {
@@ -76,7 +102,7 @@ public class Ball : MonoBehaviour
             hitByBat = true;
             PlaySFX(2);
             trail.emitting = true;
-            debugText.text = "Bat hit";
+            //debugText.text = "Bat hit";
 
             if (hitMarkerPrefab != null && collision.contactCount > 0)
             {
@@ -123,13 +149,13 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("pitch") && hitByBat && !hitGround)
         {
             hitGround = true;
-            debugText.text = debugText.text + "\nPitch hit collider";
+            //debugText.text = debugText.text + "\nPitch hit collider";
         }
 
         if (collision.gameObject.CompareTag("ground")  && hitByBat && !hitGround)
         {
             hitGround = true;
-            debugText.text = debugText.text + "\nGround hit collider";
+            //debugText.text = debugText.text + "\nGround hit collider";
         }
 
 
@@ -156,9 +182,9 @@ public class Ball : MonoBehaviour
             if (Physics.Raycast(ray, groundCheckDistance, groundLayer))
             {
                 hitGround = true;
-                Debug.DrawRay(transform.position, GetComponent<Rigidbody>().angularVelocity.normalized * 0.5f, Color.red);
-                Debug.Log("Ball has hit the ground.");
-                debugText.text = debugText.text + "\nGround hit raycast";
+                //Debug.DrawRay(transform.position, GetComponent<Rigidbody>().angularVelocity.normalized * 0.5f, Color.red);
+                //Debug.Log("Ball has hit the ground.");
+                //debugText.text = debugText.text + "\nGround hit raycast";
             }
         }
     }

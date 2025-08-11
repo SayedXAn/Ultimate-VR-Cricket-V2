@@ -19,17 +19,14 @@ public class ScoreManager : MonoBehaviour
     {
         totalRun += run;
         wicket += wick;
-        if(run == 6)
-        {
-            ShowNotification("6");
-        }
-        else if(run == 4)
-        {
-            ShowNotification("4");
-        }
-        else if (run == 0 && wick == 1)
+        
+        if (run == 0 && wick == 1)
         {
             ShowNotification("Out!");
+        }
+        else
+        {
+            ShowNotification(run.ToString());
         }
         scoreBoardText.text = totalRun.ToString() + "-" + wicket.ToString() + "\n" + (totalBall/6) +"."+ (totalBall%6);
     }
