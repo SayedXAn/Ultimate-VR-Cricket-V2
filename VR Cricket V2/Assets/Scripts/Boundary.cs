@@ -26,7 +26,7 @@ public class Boundary : MonoBehaviour
                 }
                 
             }
-            bowler.ReadyToBall();
+            bowler.ReadyToBall(false);
             Destroy(other.gameObject);
         }
 

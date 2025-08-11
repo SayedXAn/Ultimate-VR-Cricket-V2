@@ -8,7 +8,7 @@ public class WicketKeeper : MonoBehaviour
         if(other.gameObject.CompareTag("ball") & !other.gameObject.GetComponent<Ball>().hitByBat)
         {
             Destroy(other.gameObject);
-            bowler.ReadyToBall();
+            bowler.ReadyToBall(false);
         }
     }
 }

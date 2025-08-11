@@ -54,7 +54,7 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(rb.linearVelocity.magnitude);
+        //Debug.Log(rb.linearVelocity.magnitude);
         if (rb.linearVelocity.magnitude < 0.75f && !rb.isKinematic)
         {
             StartCoroutine(SmallDelay());
@@ -65,8 +65,8 @@ public class Ball : MonoBehaviour
     IEnumerator SmallDelay()
     {
         rb.isKinematic = true;
-        yield return new WaitForSeconds(1);        
-        bowler.ReadyToBall();
+        yield return new WaitForSeconds(0.25f);        
+        bowler.ReadyToBall(false);
         Destroy(gameObject);
     }
     private void OnCollisionEnter(Collision collision)
@@ -96,7 +96,7 @@ public class Ball : MonoBehaviour
             //out
             PlaySFX(1);
             scoreManager.UpdateScore(0, 1);
-            bowler.ReadyToBall();
+            bowler.ReadyToBall(false);
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("pitch") && !hitByBat && !hasBounced)

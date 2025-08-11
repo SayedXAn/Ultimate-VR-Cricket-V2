@@ -14820,11 +14820,11 @@ Transform:
   m_GameObject: {fileID: 3803730704815930619}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -511.0141, y: 6.785081, z: -497.7404}
+  m_LocalPosition: {x: 9.425903, y: 6.785081, z: 0.42660522}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4284868924834847640}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2964460300444749882
 Transform:
@@ -15779,21 +15779,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3924875459448788295
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4412443258234834941}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.015114097, y: -0.49992388, z: 0.8658935, w: 0.008726119}
-  m_LocalPosition: {x: 0.0010083553, y: 0.34170008, z: 0.47150993}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4786390516597831738}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3932236875804801818
 Transform:
   m_ObjectHideFlags: 0
@@ -16282,7 +16267,6 @@ Transform:
   - {fileID: 7917588335216869216}
   - {fileID: 249099495}
   - {fileID: 5999284705739823519}
-  - {fileID: 2946391216009692831}
   - {fileID: 6712944387874442557}
   - {fileID: 802934469112582965}
   - {fileID: 7648177742298966131}
@@ -16483,25 +16467,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6766630816048330229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4412443258234834941
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3924875459448788295}
-  - component: {fileID: 8586613861305364397}
-  - component: {fileID: 8586613861305364399}
-  - component: {fileID: 8586613861305364398}
-  m_Layer: 0
-  m_Name: Left Controller Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &4429804479548580542
 GameObject:
   m_ObjectHideFlags: 0
@@ -17199,7 +17164,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4786390516147574872}
-  - {fileID: 6309448109548433139}
   - {fileID: 4786390516597831738}
   - {fileID: 5448891718763654109}
   - {fileID: 6766630816048330229}
@@ -17239,7 +17203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3924875459448788295}
+  - {fileID: 6309448109548433139}
   m_Father: {fileID: 4786390516197033081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4801698655583590310
@@ -18491,15 +18455,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729071916025207483}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.39896742, y: -0.5838022, z: -0.5838022, w: 0.39896742}
-  m_LocalPosition: {x: 727.9, y: 76.41991, z: 585.9}
+  m_LocalRotation: {x: -0.33073068, y: -0.6249938, z: -0.6249938, w: 0.33073068}
+  m_LocalPosition: {x: 727.98315, y: 76.41991, z: 685.6881}
   m_LocalScale: {x: 3743.7031, y: 184.65373, z: 1927.4474}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 90128878766213935}
   - {fileID: 1063399754445100385}
   m_Father: {fileID: 5999284705739823519}
-  m_LocalEulerAnglesHint: {x: -90, y: -110, z: -1.303}
+  m_LocalEulerAnglesHint: {x: -90, y: -180, z: 55.773003}
 --- !u!33 &5633157951063300613
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19503,7 +19467,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4786390516197033081}
+    m_TransformParent: {fileID: 4786390516597831738}
     m_Modifications:
     - target: {fileID: 1627871028668287632, guid: 003d11bd5eee3394c9d70d351d8cbbf7, type: 3}
       propertyPath: m_Name
@@ -19552,7 +19516,7 @@ PrefabInstance:
     - target: {fileID: 8989654318722238532, guid: 003d11bd5eee3394c9d70d351d8cbbf7, type: 3}
       propertyPath: LCon
       value: 
-      objectReference: {fileID: 4412443258234834941}
+      objectReference: {fileID: 4786390516597831717}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21638,7 +21602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 82
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7434607111686160283
 Transform:
   m_ObjectHideFlags: 0
@@ -22340,7 +22304,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'You scored: 0
+
+    Press the ''Trigger button to play again'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -22367,12 +22333,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 5.6
+  m_fontSizeBase: 5.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 10
-  m_fontSizeMax: 12
+  m_fontSizeMin: 5
+  m_fontSizeMax: 10
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -22691,7 +22657,18 @@ MonoBehaviour:
   angleVariation: 1.2
   bowlerAnimator: {fileID: 5778293562184501640}
   scoreManager: {fileID: 8621774315979038303}
-  conAnim: {fileID: 8586613861305364397}
+  leftTriggerAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f4b249e7-a0a7-404e-a224-b61f633f20e9
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &8043969220765067559
 GameObject:
   m_ObjectHideFlags: 0
@@ -23292,120 +23269,6 @@ MonoBehaviour:
     m_ManualQueueTargetFrame: 0
   m_PressThreshold: 0.8
   m_ReleaseThreshold: 0.25
---- !u!114 &8586613861305364397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4412443258234834941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a5f76f9ea8c80547973ab01877f9567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ThumbstickTransform: {fileID: 0}
-  m_StickRotationRange: {x: 30, y: -30}
-  m_StickInput:
-    m_InputSourceMode: 2
-    m_InputAction:
-      m_Name: Thumbstick
-      m_Type: 0
-      m_ExpectedControlType: Vector2
-      m_Id: 2f424cdc-fe47-4989-a9c2-6fa97f609e70
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_InputActionReference: {fileID: -60998027439631388, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-    m_ObjectReferenceObject: {fileID: 0}
-    m_ManualValue: {x: 0, y: 0}
-  m_TriggerTransform: {fileID: 0}
-  m_TriggerXAxisRotationRange: {x: 0, y: -15}
-  m_TriggerInput:
-    m_InputSourceMode: 2
-    m_InputAction:
-      m_Name: Trigger
-      m_Type: 0
-      m_ExpectedControlType: Axis
-      m_Id: adbe6783-3cbb-48f7-8ad5-0b09a32b9943
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_InputActionReference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-    m_ObjectReferenceObject: {fileID: 0}
-    m_ManualValue: 0
-  m_GripTransform: {fileID: 0}
-  m_GripRightRange: {x: -0.0125, y: -0.011}
-  m_GripInput:
-    m_InputSourceMode: 2
-    m_InputAction:
-      m_Name: Grip
-      m_Type: 0
-      m_ExpectedControlType: Axis
-      m_Id: 7ddc77c6-8f81-4889-aaca-964286dbe1ea
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_InputActionReference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-    m_ObjectReferenceObject: {fileID: 0}
-    m_ManualValue: 0
-  pressed: 0
---- !u!33 &8586613861305364398
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4412443258234834941}
-  m_Mesh: {fileID: -5495902117074765545, guid: 6bd5ef6960cfafc4e9402d525ca39641, type: 3}
---- !u!23 &8586613861305364399
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4412443258234834941}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: e42270a11c28f4744b73a18278e4ef33, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8592285363067729615
 GameObject:
   m_ObjectHideFlags: 0
@@ -23436,7 +23299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5b5b50c522a154794bac9239d073cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalBallToPlay: 6
+  totalBallToPlay: 7
   scoreBoardText: {fileID: 7526332955718054107}
   notiText: {fileID: 7917089672154001653}
   crowdAudio: {fileID: 2579114318098118822}
@@ -24447,5 +24310,6 @@ SceneRoots:
   - {fileID: 187784251}
   - {fileID: 2113167354}
   - {fileID: 1633259144}
+  - {fileID: 2946391216009692831}
   - {fileID: 1464299053}
   - {fileID: 1332486681}

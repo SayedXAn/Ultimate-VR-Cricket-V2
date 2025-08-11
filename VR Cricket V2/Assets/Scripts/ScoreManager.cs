@@ -11,6 +11,10 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text scoreBoardText;
     public TMP_Text notiText;
     public AudioSource crowdAudio;
+    //private void Update()
+    //{
+    //    Debug.Log("notiiii  "+ notiText.transform.position);
+    //}
     public void UpdateScore(int run, int wick)
     {
         totalRun += run;
@@ -29,6 +33,12 @@ public class ScoreManager : MonoBehaviour
         }
         scoreBoardText.text = totalRun.ToString() + "-" + wicket.ToString() + "\n" + (totalBall/6) +"."+ (totalBall%6);
     }
+    public void ResetScoreBoard()
+    {
+        totalRun = 0;
+        wicket = 0;
+        scoreBoardText.text = "0-0\n0.0";
+    }
 
     public void UpdateBall(/*int ttlBall*/)
     {
@@ -40,6 +50,7 @@ public class ScoreManager : MonoBehaviour
     public void ShowNotification(string str)
     {
         notiText.text = str;
+        notiText.fontSize = 12f;
         StartCoroutine(Notification());
     }
 
@@ -84,10 +95,14 @@ public class ScoreManager : MonoBehaviour
         crowdAudio.volume = 0.3f;
     }
 
-    public void NotificationOnInningsEnd(string str)
+    public void NotificationOnInningsEnd(string str, float fontSize)
     {
         notiText.text = str;
-        notiText.gameObject.SetActive(true);
+        notiText.fontSize = fontSize;
+        notiText.gameObject.SetActive(true);        
         notiText.GetComponent<Animator>().enabled = false;
+        notiText.transform.position = new Vector3(627.80f, 28.96f, 500.47f);
+
+
     }
 }

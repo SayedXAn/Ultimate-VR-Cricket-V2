@@ -9,8 +9,8 @@ public class BatCollision : MonoBehaviour
     void Update()
     {
         // Track bat velocity manually
-        transform.position = LCon.transform.position;
-        transform.rotation = LCon.transform.rotation;
+        //transform.position = LCon.transform.position;
+        //transform.rotation = LCon.transform.rotation;
         batVelocity = (transform.position - lastPosition) / Time.deltaTime;
         lastPosition = transform.position;
     }

@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
+using UnityEngine.InputSystem;
 
 public class Bowler : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public class Bowler : MonoBehaviour
     //private int totalBall = 0; //let's keep the TotalBallCount and TotalRunCount in only the scoreManager script
     private int overBall = 0;
     private int currentOverType = 0;
-    private bool readyToBall = true;
+    private bool readyToBall = false;
     private bool inningsEnded = true;
     private int lastOverType = -1;
 
@@ -28,8 +27,8 @@ public class Bowler : MonoBehaviour
     public float angleVariation = 5f;
     [SerializeField] Animator bowlerAnimator;
     public ScoreManager scoreManager;
-    public ControllerAnimator conAnim;
 
+    public InputActionProperty leftTriggerAction;
     private void Start()
     {
         //InvokeRepeating("StartBowling", 1f, 8f);
@@ -40,11 +39,12 @@ public class Bowler : MonoBehaviour
     }
 
     private void Update()
-    {
-        if(!readyToBall && inningsEnded && conAnim.pressed)
+    {        
+        if(!readyToBall && inningsEnded && leftTriggerAction.action != null && leftTriggerAction.action.IsPressed())
         {
+            //=Debug.Log("Dhukeseeeeeeeeeee");
             inningsEnded = false;
-            ReadyToBall();
+            ReadyToBall(true);
         }
     }
 
@@ -122,18 +122,17 @@ public class Bowler : MonoBehaviour
             StartNewOver();
             //InningsEnd();
         }
-        else
-        {
-            GetComponent<Animator>().applyRootMotion = true;
-            GetComponent<Animator>().Play(animationName, -1, 0f);
-        }
+        GetComponent<Animator>().applyRootMotion = true;
+        GetComponent<Animator>().Play(animationName, -1, 0f);
     }
 
     public void InningsEnd()
     {
+        readyToBall = false;
+        inningsEnded = true;
         string tempStr = "You scored: " + scoreManager.GetTotalRun().ToString() + "\nPress the 'Trigger button to play again";
         //scoreManager.ShowNotification(tempStr);
-        scoreManager.NotificationOnInningsEnd(tempStr);
+        scoreManager.NotificationOnInningsEnd(tempStr, 5.6f);
         scoreManager.ResetTotalBall();
         scoreManager.ResetTotalRun();
 
@@ -164,13 +163,16 @@ public class Bowler : MonoBehaviour
         scoreManager.ShowNotification(tempText);
     }
 
-    public void ReadyToBall()
+    public void ReadyToBall(bool isNewInnings)
     {
         if(!readyToBall)
         {
             readyToBall = true;
-            overBall = 0;
-            StartNewOver();
+            if(isNewInnings)
+            {
+                StartNewOver();
+                scoreManager.ResetScoreBoard();
+            }
             StartCoroutine(DelayBeforeBowling());
         }
 
