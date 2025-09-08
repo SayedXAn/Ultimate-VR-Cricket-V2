@@ -5517,7 +5517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1235727068
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20099,7 +20099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6492336641028913398
 GameObject:
   m_ObjectHideFlags: 0
@@ -23299,7 +23299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5b5b50c522a154794bac9239d073cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalBallToPlay: 7
+  totalBallToPlay: 6
   scoreBoardText: {fileID: 7526332955718054107}
   notiText: {fileID: 7917089672154001653}
   crowdAudio: {fileID: 2579114318098118822}
