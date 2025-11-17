@@ -98,6 +98,7 @@ public class ScoreManager : MonoBehaviour
 
     public void NotificationOnInningsEnd(string str, float fontSize)
     {
+        StopAllCoroutines();
         notiText.text = str;
         notiText.fontSize = fontSize;
         notiText.gameObject.SetActive(true);        
