@@ -38,7 +38,7 @@ public class Ball : MonoBehaviour
     private GameObject stump;
     private float distanceFromStump = 0.0f;
 
-
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -189,4 +189,5 @@ public class Ball : MonoBehaviour
         }
     }
 
+    
 }

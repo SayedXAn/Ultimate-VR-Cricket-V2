@@ -11,6 +11,9 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text scoreBoardText;
     public TMP_Text notiText;
     public AudioSource crowdAudio;
+
+    public GameObject bells;
+    public GameObject groundedBells;
     //private void Update()
     //{
     //    Debug.Log("notiiii  "+ notiText.transform.position);
@@ -23,6 +26,7 @@ public class ScoreManager : MonoBehaviour
         if (run == 0 && wick == 1)
         {
             ShowNotification("Out!");
+            StartCoroutine(BellsGrounded());
         }
         else
         {
@@ -101,5 +105,13 @@ public class ScoreManager : MonoBehaviour
         notiText.transform.position = new Vector3(627.80f, 28.96f, 500.47f);
 
 
+    }
+    IEnumerator BellsGrounded()
+    {
+        bells.SetActive(false);
+        groundedBells.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        bells.SetActive(true);
+        groundedBells.SetActive(false);
     }
 }
