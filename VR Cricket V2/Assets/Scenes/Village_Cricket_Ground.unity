@@ -22232,7 +22232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 82
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7434607111686160283
 Transform:
   m_ObjectHideFlags: 0
